@@ -16,7 +16,7 @@
 
     <!-- Starting an immersive WebXR session requires user interaction.
     We start this one with a simple button. -->
-    <button onclick="activateXR()">Start Hello WebXR1</button>
+    <button onclick="activateXR()">Start Hello WebXR</button>
     <script>
         async function activateXR() {
             // Add a canvas element and initialize a WebGL context that is compatible with WebXR.
@@ -29,7 +29,6 @@
             const directionalLight = new THREE.DirectionalLight(0xffffff, 0.3);
             directionalLight.position.set(10, 15, 10);
             scene.add(directionalLight);
-
 
             // Set up the WebGLRenderer, which handles rendering to the session's base layer.
             const renderer = new THREE.WebGLRenderer({
@@ -61,6 +60,7 @@
             // Perform hit testing using the viewer as origin.
             const hitTestSource = await session.requestHitTestSource({ space: viewerSpace });
 
+            /*
             const loader = new THREE.GLTFLoader();
             let reticle;
             loader.load("https://immersive-web.github.io/webxr-samples/media/gltf/reticle/reticle.gltf", function (gltf) {
@@ -81,6 +81,7 @@
                     scene.add(clone);
                 }
             });
+            */
 
             // Create a render loop that allows us to draw on the AR view.
             const onXRFrame = (time, frame) => {
@@ -118,7 +119,6 @@
                 }
             }
             session.requestAnimationFrame(onXRFrame);
-
         }
     </script>
 </body>
